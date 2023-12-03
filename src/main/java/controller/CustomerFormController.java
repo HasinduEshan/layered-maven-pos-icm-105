@@ -1,5 +1,7 @@
 package controller;
 
+import bo.custom.CustomerBo;
+import bo.custom.impl.CustomerBoImpl;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -11,8 +13,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import dto.CustomerDto;
 import dto.tm.CustomerTm;
-import dao.CustomerModel;
-import dao.impl.CustomerModelImpl;
+import dao.custom.CustomerDao;
+import dao.custom.impl.CustomerDaoImpl;
 
 import java.io.IOException;
 import java.sql.*;
@@ -51,7 +53,7 @@ public class CustomerFormController {
     @FXML
     private TextField txtSalary;
 
-    private CustomerModel customerModel = new CustomerModelImpl();
+    private CustomerBo<CustomerDto> customerBo = new CustomerBoImpl();
 
     public void initialize(){
         colId.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -80,7 +82,7 @@ public class CustomerFormController {
         ObservableList<CustomerTm> tmList = FXCollections.observableArrayList();
 
         try {
-            List<CustomerDto> dtoList  = customerModel.allCustomers();
+            List<CustomerDto> dtoList  = customerBo.allCustomers();
             for (CustomerDto dto:dtoList) {
                 Button btn = new Button("Delete");
                 CustomerTm c = new CustomerTm(
@@ -106,7 +108,7 @@ public class CustomerFormController {
     private void deleteCustomer(String id) {
 
         try {
-            boolean isDeleted = customerModel.deleteCustomer(id);
+            boolean isDeleted = customerBo.deleteCustomer(id);
             if (isDeleted){
                 new Alert(Alert.AlertType.INFORMATION,"Customer Deleted!").show();
                 loadCustomerTable();
@@ -144,7 +146,7 @@ public class CustomerFormController {
         );
 
         try {
-            boolean isSaved = customerModel.saveCustomer(dto);
+            boolean isSaved = customerBo.saveCustomer(dto);
             if (isSaved){
                 new Alert(Alert.AlertType.INFORMATION,"Customer Saved!").show();
                 loadCustomerTable();
@@ -167,7 +169,7 @@ public class CustomerFormController {
         );
 
         try {
-            boolean isUpdated = customerModel.updateCustomer(dto);
+            boolean isUpdated = customerBo.updateCustomer(dto);
             if (isUpdated){
                 new Alert(Alert.AlertType.INFORMATION,"Customer "+dto.getId()+" Updated!").show();
                 loadCustomerTable();

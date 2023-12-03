@@ -1,17 +1,17 @@
-package dao.impl;
+package dao.custom.impl;
 
 import db.DBConnection;
 import dto.OrderDto;
-import dao.OrderDetailModel;
-import dao.OrderModel;
+import dao.custom.OrderDetailDao;
+import dao.custom.OrderDao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class OrderModelImpl implements OrderModel {
-    private OrderDetailModel orderDetailModel = new OrderDetailModelImpl();
+public class OrderDaoImpl implements OrderDao {
+    private OrderDetailDao orderDetailDao = new OrderDetailDaoImpl();
     @Override
     public boolean saveOrder(OrderDto dto) throws SQLException, ClassNotFoundException {
         Connection connection = null;
@@ -26,7 +26,7 @@ public class OrderModelImpl implements OrderModel {
 
             if (pstm.executeUpdate() > 0) {
 
-                boolean isDetailsSaved = orderDetailModel.saveOrderDetails(dto.getList());
+                boolean isDetailsSaved = orderDetailDao.saveOrderDetails(dto.getList());
                 if (isDetailsSaved) {
                     connection.commit();
                     return true;

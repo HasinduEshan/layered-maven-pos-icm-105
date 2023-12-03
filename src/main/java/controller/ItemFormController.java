@@ -19,8 +19,8 @@ import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.cell.TreeItemPropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import dao.ItemModel;
-import dao.impl.ItemModelImpl;
+import dao.custom.ItemDao;
+import dao.custom.impl.ItemDaoImpl;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -41,7 +41,7 @@ public class ItemFormController {
     public TreeTableColumn colQty;
     public TreeTableColumn colOption;
 
-    private ItemModel itemModel = new ItemModelImpl();
+    private ItemDao itemDao = new ItemDaoImpl();
 
     public void initialize(){
         colCode.setCellValueFactory(new TreeItemPropertyValueFactory<>("code"));
@@ -70,7 +70,7 @@ public class ItemFormController {
         ObservableList<ItemTm> tmList = FXCollections.observableArrayList();
 
         try {
-            List<ItemDto> dtoList  = itemModel.allItems();
+            List<ItemDto> dtoList  = itemDao.allItems();
             for (ItemDto dto:dtoList) {
                 JFXButton btn = new JFXButton("Delete");
 

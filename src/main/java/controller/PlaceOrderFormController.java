@@ -19,12 +19,12 @@ import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.cell.TreeItemPropertyValueFactory;
 import javafx.stage.Stage;
-import dao.CustomerModel;
-import dao.ItemModel;
-import dao.OrderModel;
-import dao.impl.CustomerModelImpl;
-import dao.impl.ItemModelImpl;
-import dao.impl.OrderModelImpl;
+import dao.custom.CustomerDao;
+import dao.custom.ItemDao;
+import dao.custom.OrderDao;
+import dao.custom.impl.CustomerDaoImpl;
+import dao.custom.impl.ItemDaoImpl;
+import dao.custom.impl.OrderDaoImpl;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -75,14 +75,14 @@ public class PlaceOrderFormController {
     @FXML
     private Label lblTotal;
 
-    private CustomerModel customerModel = new CustomerModelImpl();
-    private ItemModel itemModel = new ItemModelImpl();
+    private CustomerDao customerDao = new CustomerDaoImpl();
+    private ItemDao itemDao = new ItemDaoImpl();
     private List<CustomerDto> customers;
     private List<ItemDto> items;
     private double total=0;
 
     private ObservableList<OrderTm> tmList = FXCollections.observableArrayList();
-    private OrderModel orderModel = new OrderModelImpl();
+    private OrderDao orderDao = new OrderDaoImpl();
 
     public void initialize(){
         colCode.setCellValueFactory(new TreeItemPropertyValueFactory<>("code"));
@@ -92,8 +92,8 @@ public class PlaceOrderFormController {
         colOption.setCellValueFactory(new TreeItemPropertyValueFactory<>("btn"));
 
         try {
-            customers = customerModel.allCustomers();
-            items = itemModel.allItems();
+            customers = cus.allCustomers();
+            items = itemDao.allItems();
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -123,7 +123,7 @@ public class PlaceOrderFormController {
 
     private void setOrderId() {
         try {
-            String id = orderModel.getLastOrder().getOrderId();
+            String id = orderDao.getLastOrder().getOrderId();
             if (id!=null){
                 int num = Integer.parseInt(id.split("[D]")[1]);
                 num++;
@@ -230,7 +230,7 @@ public class PlaceOrderFormController {
 
 
         try {
-            boolean isSaved = orderModel.saveOrder(dto);
+            boolean isSaved = orderDao.saveOrder(dto);
             if (isSaved){
                 new Alert(Alert.AlertType.INFORMATION, "Order Saved!").show();
                 setOrderId();
