@@ -77,7 +77,7 @@ public class PlaceOrderFormController {
     @FXML
     private Label lblTotal;
 
-    private CustomerBo<CustomerDto> customerBo = new CustomerBoImpl();
+    private CustomerBo customerBo = new CustomerBoImpl();
     private ItemDao itemDao = new ItemDaoImpl();
     private List<CustomerDto> customers;
     private List<ItemDto> items;

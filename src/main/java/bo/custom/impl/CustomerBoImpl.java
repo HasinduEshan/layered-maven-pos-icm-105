@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CustomerBoImpl implements CustomerBo<CustomerDto> {
+public class CustomerBoImpl implements CustomerBo {
     private CustomerDao customerDao = new CustomerDaoImpl();
     @Override
     public boolean saveCustomer(CustomerDto dto) throws SQLException, ClassNotFoundException {
