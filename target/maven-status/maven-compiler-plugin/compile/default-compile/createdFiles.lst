@@ -1,4 +1,5 @@
 entity\Item.class
+dao\util\BoType.class
 dto\tm\CustomerTm.class
 dao\custom\impl\OrderDetailDaoImpl.class
 controller\PlaceOrderFormController.class
@@ -27,6 +28,8 @@ entity\Customer.class
 dto\CustomerDto.class
 dto\ItemDto.class
 controller\CustomerFormController.class
+bo\BoFactory$1.class
+bo\BoFactory.class
 dao\custom\impl\CustomerDaoImpl.class
 dao\custom\OrderDao.class
 AppInitializer.class
