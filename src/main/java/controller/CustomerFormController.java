@@ -1,6 +1,5 @@
 package controller;
 
-import db.DBConnection;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -12,8 +11,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import dto.CustomerDto;
 import dto.tm.CustomerTm;
-import model.CustomerModel;
-import model.impl.CustomerModelImpl;
+import dao.CustomerModel;
+import dao.impl.CustomerModelImpl;
 
 import java.io.IOException;
 import java.sql.*;

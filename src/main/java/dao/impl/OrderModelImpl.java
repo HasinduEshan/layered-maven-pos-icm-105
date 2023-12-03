@@ -1,16 +1,14 @@
-package model.impl;
+package dao.impl;
 
 import db.DBConnection;
-import dto.OrderDetailDto;
 import dto.OrderDto;
-import model.OrderDetailModel;
-import model.OrderModel;
+import dao.OrderDetailModel;
+import dao.OrderModel;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
 
 public class OrderModelImpl implements OrderModel {
     private OrderDetailModel orderDetailModel = new OrderDetailModelImpl();
