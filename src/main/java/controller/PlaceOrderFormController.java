@@ -1,7 +1,9 @@
 package controller;
 
 import bo.custom.CustomerBo;
+import bo.custom.OrderBo;
 import bo.custom.impl.CustomerBoImpl;
+import bo.custom.impl.OrderBoImpl;
 import com.jfoenix.controls.*;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import dto.CustomerDto;
@@ -78,13 +80,14 @@ public class PlaceOrderFormController {
     private Label lblTotal;
 
     private CustomerBo customerBo = new CustomerBoImpl();
+    private OrderBo orderBo= new OrderBoImpl();
     private ItemDao itemDao = new ItemDaoImpl();
     private List<CustomerDto> customers;
     private List<ItemDto> items;
     private double total=0;
 
     private ObservableList<OrderTm> tmList = FXCollections.observableArrayList();
-    private OrderDao orderDao = new OrderDaoImpl();
+//    private OrderDao orderDao = new OrderDaoImpl();
 
     public void initialize(){
         colCode.setCellValueFactory(new TreeItemPropertyValueFactory<>("code"));
@@ -125,20 +128,12 @@ public class PlaceOrderFormController {
 
     private void setOrderId() {
         try {
-            String id = orderDao.getLastOrder().getOrderId();
-            if (id!=null){
-                int num = Integer.parseInt(id.split("[D]")[1]);
-                num++;
-                lblOrderId.setText(String.format("D%03d",num));
-            }else{
-                lblOrderId.setText("D001");
-            }
+            lblOrderId.setText(orderBo.generateId());
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
-
     }
 
     private void loadItemCodes() {
@@ -232,7 +227,7 @@ public class PlaceOrderFormController {
 
 
         try {
-            boolean isSaved = orderDao.saveOrder(dto);
+            boolean isSaved = orderBo.saveOrder(dto);
             if (isSaved){
                 new Alert(Alert.AlertType.INFORMATION, "Order Saved!").show();
                 setOrderId();
