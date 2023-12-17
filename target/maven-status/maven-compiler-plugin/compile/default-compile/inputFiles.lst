@@ -2,6 +2,7 @@ E:\Hasindu Eshan\ICM 105\JavaFx\maven-pos-layered\src\main\java\dto\tm\CustomerT
 E:\Hasindu Eshan\ICM 105\JavaFx\maven-pos-layered\src\main\java\dao\CrudDao.java
 E:\Hasindu Eshan\ICM 105\JavaFx\maven-pos-layered\src\main\java\dao\DaoFactory.java
 E:\Hasindu Eshan\ICM 105\JavaFx\maven-pos-layered\src\main\java\dao\util\DaoType.java
+E:\Hasindu Eshan\ICM 105\JavaFx\maven-pos-layered\src\main\java\dao\util\HibernateUtil.java
 E:\Hasindu Eshan\ICM 105\JavaFx\maven-pos-layered\src\main\java\entity\Orders.java
 E:\Hasindu Eshan\ICM 105\JavaFx\maven-pos-layered\src\main\java\db\DBConnection.java
 E:\Hasindu Eshan\ICM 105\JavaFx\maven-pos-layered\src\main\java\Main.java

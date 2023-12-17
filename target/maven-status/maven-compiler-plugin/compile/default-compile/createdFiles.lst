@@ -33,6 +33,7 @@ db\DBConnection.class
 dto\OrderDto.class
 dao\custom\OrderDetailDao.class
 dao\util\HibernateUtil.class
+entity\OrderDetailsKey.class
 bo\custom\impl\OrderBoImpl.class
 controller\CustomerFormController.class
 bo\BoFactory$1.class
