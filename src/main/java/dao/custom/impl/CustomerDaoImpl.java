@@ -23,13 +23,6 @@ public class CustomerDaoImpl implements CustomerDao {
     @Override
     public boolean save(Customer entity) throws SQLException, ClassNotFoundException {
         String sql = "INSERT INTO customer VALUES(?,?,?,?)";
-//        PreparedStatement pstm = DBConnection.getInstance().getConnection().prepareStatement(sql);
-//        pstm.setString(1,entity.getId());
-//        pstm.setString(2,entity.getName());
-//        pstm.setString(3,entity.getAddress());
-//        pstm.setDouble(4,entity.getSalary());
-//
-//        return pstm.executeUpdate()>0;
         return CrudUtil.execute(sql,entity.getId(),entity.getName(),entity.getAddress(),entity.getSalary());
     }
 
