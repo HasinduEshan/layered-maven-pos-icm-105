@@ -12,6 +12,7 @@ E:\Hasindu Eshan\ICM 105\JavaFx\maven-pos-layered\src\main\java\dto\tm\ItemTm.ja
 E:\Hasindu Eshan\ICM 105\JavaFx\maven-pos-layered\src\main\java\controller\CustomerFormController.java
 E:\Hasindu Eshan\ICM 105\JavaFx\maven-pos-layered\src\main\java\dao\util\BoType.java
 E:\Hasindu Eshan\ICM 105\JavaFx\maven-pos-layered\src\main\java\entity\Item.java
+E:\Hasindu Eshan\ICM 105\JavaFx\maven-pos-layered\src\main\java\entity\OrderDetailsKey.java
 E:\Hasindu Eshan\ICM 105\JavaFx\maven-pos-layered\src\main\java\dao\custom\impl\CustomerDaoImpl.java
 E:\Hasindu Eshan\ICM 105\JavaFx\maven-pos-layered\src\main\java\controller\PlaceOrderFormController.java
 E:\Hasindu Eshan\ICM 105\JavaFx\maven-pos-layered\src\main\java\dao\custom\impl\ItemDaoImpl.java
